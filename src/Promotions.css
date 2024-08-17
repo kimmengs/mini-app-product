@@ -1,0 +1,13 @@
+.card-img-top {
+    max-height: 100px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  h4 {
+    margin-bottom: 15px;
+  }
+  
