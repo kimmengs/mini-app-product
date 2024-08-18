@@ -6,7 +6,9 @@ import WebApp from '@twa-dev/sdk'
 import Promotions from './Promotion';
 
 function App() {
-  return (<><Promotions /><MainButton text="Submit" color='#000' onClick={() => alert('submitted')} /></>);
+  return (<><Promotions />
+  {/* <MainButton text="Submit" color='#000' onClick={() => alert('submitted')} /> */}
+  </>);
 }
 
 export default App;
