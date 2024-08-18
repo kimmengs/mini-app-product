@@ -27,7 +27,7 @@ const Promotions = () => {
                                                 Join TAP, TRACK, WIN today to enjoy more rewards!
                                             </p>
                                             <a href="#" className="btn btn-warning">
-                                                Earn up to RM140
+                                                Action 1
                                             </a>
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@ const Promotions = () => {
                                                 Enjoy more durian deals at RM30 OFF when you scan & pay!
                                             </p>
                                             <a href="#" className="btn btn-warning">
-                                                RM30 OFF
+                                                Action 2
                                             </a>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@ const Promotions = () => {
                         </div>
                         {/* Add more carousel items here for the other cards */}
                     </div>
-                    {/* <button
+                    <button
                         className="carousel-control-prev"
                         type="button"
                         data-bs-target="#featuredCarousel"
@@ -111,7 +111,7 @@ const Promotions = () => {
                     >
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Next</span>
-                    </button> */}
+                    </button>
                 </div>
             </div>
 
