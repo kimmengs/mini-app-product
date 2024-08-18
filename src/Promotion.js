@@ -2,8 +2,17 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import "./Promotions.css"; // Add any additional custom styles here
+import { useNavigate } from "react-router-dom";
 
 const Promotions = () => {
+
+    const navigate = useNavigate();
+
+    const handleNavigate = (id) => {
+        navigate(`/promotion/${id}`);
+    };
+
+
     return (
         <div className="container mt-3">
             <h2 className="text-center">Promotions</h2>
@@ -26,9 +35,12 @@ const Promotions = () => {
                                             <p className="card-text">
                                                 Join TAP, TRACK, WIN today to enjoy more rewards!
                                             </p>
-                                            <a href="#" className="btn btn-warning">
-                                                Action 1
-                                            </a>
+                                            <button
+                                                className="btn btn-warning"
+                                                onClick={() => handleNavigate(1)} // Passing an ID to navigate
+                                            >
+                                                Detail
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
