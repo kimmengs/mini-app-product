@@ -5,8 +5,39 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import WebApp from '@twa-dev/sdk'
 import Promotions from './Promotion';
 import PromotionDetail from './PromotionDetail';
+import { useEffect, useState } from 'react';
+import Lottie from 'react-lottie';
+import animationData from './assets/animations/loading.json'; // Update with the path to your Lottie animation JSON
 
 function App() {
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // 3 seconds
+
+    return () => clearTimeout(timer); // Cleanup the timer
+  }, []);
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <Lottie options={defaultOptions} height={110} width={110} />
+      </div>
+    );
+  }
+
   return (
     <>
       <Router>
