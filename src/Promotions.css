@@ -1,4 +1,8 @@
 /* Set background color for the entire container */
+body {
+  background-color: #f8f9fa;
+}
+
 .container {
   background-color: #f8f9fa; /* Light gray background to match the image */
 }
@@ -39,4 +43,33 @@
 .btn-warning {
   border-radius: 5px; /* Rounded button corners */
   font-size: 14px; /* Adjust font size */
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.scrolling-wrapper {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.card {
+  flex: 0 0 auto;
+  margin-right: 10px; /* Adjust spacing between cards */
+  width: 300px;
+}
+
+.badge-new {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }

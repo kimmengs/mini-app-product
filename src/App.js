@@ -18,7 +18,7 @@ function App() {
               <PromotionDetail
                 promotion={{
                   title: "20% OFF at Aurum Theatre",
-                  imageUrl: "/assets/images/m2u-decomm.jpg",
+                  imageUrl: "/assets/images/You-Eng-Hotel-640.jpeg",
                   description:
                     "Enjoy an exclusive 20% discount on all tickets at Aurum Theatre for a limited time. Don't miss out on the best cinematic experience in town.",
                   terms:
