@@ -201,3 +201,26 @@ body {
     transform: translateY(20px);
     transition: opacity 500ms, transform 500ms;
 }
+
+.special-scrolling-wrapper {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  background-color: #f8f9fa; /* Light background color */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.special-scrolling-wrapper::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, and Opera */
+}
+
+.special-card {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  width: 200px; /* Adjust the width as needed */
+}

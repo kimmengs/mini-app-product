@@ -66,6 +66,76 @@ const Promotions = () => {
                 ))}
             </div>
 
+            <h5 className="title">Feature</h5>
+            <div className="pb-3"></div>
+            <div className="scrolling-wrapper mb-3">
+                <div className="card special-card text-center mb-3" style={{ cursor: 'pointer' }}>
+                    <img
+                        src="assets/images/You-Eng-Hotel-640.jpeg"
+                        className="card-img-top"
+                        alt="Aurum Theatre"
+                        onClick={navigateToDetail}
+                    />
+                    <div className="card-body text-left">
+                        
+                        <h5 className="card-title">Aurum Theatre</h5>
+                        <p className="card-text">20% OFF at Aurum Theatre</p>
+                        <hr />
+                        <div className="d-flex justify-content-between">
+                            <button className="btn">
+                                <i className="fa fa-heart active"></i> 133
+                            </button>
+                            <button className="btn">
+                                <i className="fa fa-share"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="card special-card text-center mb-3" style={{ cursor: 'pointer' }}>
+                    <img
+                        src="assets/images/You-Eng-Hotel-640.jpeg"
+                        className="card-img-top"
+                        alt="Aurum Theatre"
+                        onClick={navigateToDetail}
+                    />
+                    <div className="card-body text-left">
+                        
+                        <h5 className="card-title">Aurum Theatre</h5>
+                        <p className="card-text">20% OFF at Aurum Theatre</p>
+                        <hr />
+                        <div className="d-flex justify-content-between">
+                            <button className="btn">
+                                <i className="fa fa-heart active"></i> 133
+                            </button>
+                            <button className="btn">
+                                <i className="fa fa-share"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="card special-card text-center mb-3" style={{ cursor: 'pointer' }}>
+                    <img
+                        src="assets/images/You-Eng-Hotel-640.jpeg"
+                        className="card-img-top"
+                        alt="Aurum Theatre"
+                        onClick={navigateToDetail}
+                    />
+                    <div className="card-body text-left">
+                        
+                        <h5 className="card-title">Aurum Theatre</h5>
+                        <p className="card-text">20% OFF at Aurum Theatre</p>
+                        <hr />
+                        <div className="d-flex justify-content-between">
+                            <button className="btn">
+                                <i className="fa fa-heart active"></i> 133
+                            </button>
+                            <button className="btn">
+                                <i className="fa fa-share"></i> Share
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <h5 className="title">Foot & Drink</h5>
             <div className="pb-3"></div>
@@ -78,7 +148,7 @@ const Promotions = () => {
                         onClick={navigateToDetail}
                     />
                     <div className="card-body text-left">
-                        <span className="badge badge-new">New</span>
+                        
                         <h5 className="card-title">Aurum Theatre</h5>
                         <p className="card-text">20% OFF at Aurum Theatre</p>
                         <hr />
@@ -144,7 +214,7 @@ const Promotions = () => {
                     alt="Aurum Theatre"
                 />
                 <div className="card-body text-left">
-                    <span className="badge badge-new">New</span>
+                    
                     <h5 className="card-title">Aurum Theatre</h5>
                     <p className="card-text">20% OFF at Aurum Theatre</p>
                     <hr />
@@ -170,7 +240,7 @@ const Promotions = () => {
                     onClick={navigateToDetail}
                 />
                 <div className="card-body text-left">
-                    <span className="badge badge-new">New</span>
+                    
                     <h5 className="card-title">Aurum Theatre</h5>
                     <p className="card-text">20% OFF at Aurum Theatre</p>
                     <hr />
@@ -231,7 +301,7 @@ const Promotions = () => {
                     alt="Aurum Theatre"
                 />
                 <div className="card-body text-left">
-                    <span className="badge badge-new">New</span>
+                    
                     <h5 className="card-title">Aurum Theatre</h5>
                     <p className="card-text">20% OFF at Aurum Theatre</p>
                     <hr />
@@ -257,7 +327,7 @@ const Promotions = () => {
                     onClick={navigateToDetail}
                 />
                 <div className="card-body text-left">
-                    <span className="badge badge-new">New</span>
+                    
                     <h5 className="card-title">Aurum Theatre</h5>
                     <p className="card-text">20% OFF at Aurum Theatre</p>
                     <hr />
@@ -318,7 +388,7 @@ const Promotions = () => {
                     alt="Aurum Theatre"
                 />
                 <div className="card-body text-left">
-                    <span className="badge badge-new">New</span>
+                    
                     <h5 className="card-title">Aurum Theatre</h5>
                     <p className="card-text">20% OFF at Aurum Theatre</p>
                     <hr />
