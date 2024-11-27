@@ -12,26 +12,30 @@ body {
   font-size: 16px;
   font-weight: bold;
 }
-/* Card styling */
+
 .card {
-  border: none;
-  /* Remove the default border */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  /* Slightly softer and wider shadow */
-  border-radius: 12px;
-  /* Rounded corners to match the card style in the image */
-  overflow: hidden;
-  /* Ensure content doesn't overflow the card */
+  max-width: 100%;
+  /* Ensure the card does not exceed the container width */
+  margin: auto;
+  /* Center the card */
 }
 
 /* Image styling */
 .card-img-top {
   width: 100%;
-  height: 150px;
-  /* Fixed height to ensure images are uniform */
+  height: auto;
+  max-height: 300px;
+  /* Adjust as needed */
   object-fit: cover;
-  /* Crop the image to fill the space without distortion */
+  /* Maintain aspect ratio and cover the area */
+  border-top-left-radius: 6px !important;
+  /* Adjust the radius as needed */
+  border-top-right-radius: 6px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  /* Adjust the radius as needed */
 }
+
 
 /* Card title styling */
 .card-title {
@@ -82,9 +86,7 @@ body {
 
 .card {
   flex: 0 0 auto;
-  margin-right: 10px;
   /* Adjust spacing between cards */
-  width: 300px;
 }
 
 .badge-new {
@@ -138,19 +140,21 @@ body {
 
 @keyframes slideIn {
   from {
-      transform: translateX(-100%);
-      opacity: 0;
+    transform: translateX(-100%);
+    opacity: 0;
   }
+
   to {
-      transform: translateX(0);
-      opacity: 1;
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
 .card-category {
   animation: slideIn 0.3s ease-in-out;
   animation-fill-mode: forwards;
-  opacity: 0; /* Start with hidden */
+  opacity: 0;
+  /* Start with hidden */
 }
 
 .card-category:nth-child(1) {
@@ -171,4 +175,29 @@ body {
 
 .btn .fa-heart.active {
   color: #FFC600;
+}
+
+
+.fade-appear,
+.fade-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-appear-active,
+.fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 500ms, transform 500ms;
+}
+
+.fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 500ms, transform 500ms;
 }
