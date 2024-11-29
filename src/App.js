@@ -8,6 +8,7 @@ import PromotionDetail from './PromotionDetail';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
 import animationData from './assets/animations/loading.json'; // Update with the path to your Lottie animation JSON
+import ExchangeRate from './ExchangeRate';
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Promotions />} />
+          <Route path="/exchange-rate" element={<ExchangeRate />} />
           <Route
             path="/promotion/:id"
             element={

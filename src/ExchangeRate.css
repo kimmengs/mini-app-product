@@ -1,0 +1,192 @@
+body {
+    font-family: 'Montserrat';
+}
+
+.header-promotion {
+    margin: 0;
+    padding-bottom: 0;
+    line-height: 1.2;
+    font-size: 14px;
+}
+
+/* Remove default list styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Tab container */
+.custom-tab-list {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 25px;
+    position: relative;
+}
+
+/* Individual tabs */
+.custom-tab {
+    width: 250px;
+    padding: 10px 20px;
+    margin: 0 -5px;
+    /* Overlap effect */
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    background: white;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+    color: #555;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Selected tab */
+.custom-tab-selected {
+    background: #ffd700;
+    color: #000;
+    z-index: 2;
+    /* Bring the selected tab above others */
+    transform: scale(1.05);
+    /* Slightly enlarge for effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Selected tab */
+.custom-tab-selected {
+    background: #ffd700;
+    color: #000;
+    z-index: 2;
+    /* Bring the selected tab above others */
+    transform: scale(1.05);
+    /* Slightly enlarge for effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+    /* Remove focus outline */
+}
+
+/* Hover effect for tabs */
+.custom-tab:hover {
+    transform: scale(1.05);
+}
+
+/* Adjust spacing between tabs */
+.custom-tab+.custom-tab {
+    margin-left: -20px;
+    /* Overlap adjustment */
+}
+
+
+.Exchange_rate_table {
+    width: 100%;
+    margin: 20px 0;
+    font-size: 12px;
+}
+
+.Exchange_rate_header,
+.Exchange_rate_row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #CFCFCF;
+    height: 62px;
+    align-items: center;
+}
+
+.Exchange_rate_row:last-child {
+    border-bottom: none;
+    /* Remove border bottom from the last row */
+}
+
+.Exchange_rate_header .CCY,
+.Exchange_rate_row .CCY {
+    flex: 2;
+    /* Make the Currency column wider */
+    text-align: left;
+    padding-left: 14px;
+    font-weight: bold;
+}
+
+.Exchange_rate_header .Buy,
+.Exchange_rate_row .Buy,
+.Exchange_rate_header .Sell,
+.Exchange_rate_row .Sell {
+    flex: 1;
+    text-align: right;
+    padding-right: 14px;
+}
+
+.Exchange_rate_header .CCY span,
+.Exchange_rate_header .Buy span,
+.Exchange_rate_header .Sell span {
+    color: #555;
+    font-weight: bold;
+}
+
+.currency-flag {
+    width: 30px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.currency-flag-convert {
+    width: 30px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-control {
+    width: auto;
+    flex: 1;
+}
+
+.amount-input {
+    width: 100px;
+    margin-left: 10px;
+    text-align: right;
+}
+
+.border-0 {
+    border: none;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.mr-3 {
+    margin-right: 1rem;
+}
+
+.amount-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
