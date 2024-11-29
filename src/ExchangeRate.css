@@ -82,7 +82,7 @@ ul {
 
 .Exchange_rate_table {
     width: 100%;
-    margin: 20px 0;
+    margin: 10px 0;
     font-size: 12px;
 }
 
@@ -173,6 +173,13 @@ ul {
 .amount-input:focus {
     outline: none;
     box-shadow: none;
+}
+
+.header-text {
+    font-size: 14px;
+    /* Adjust this value to match the font size of the Buy and Sell headers */
+    color: #7C7C7D;
+    /* Optional: Match the color if needed */
 }
 
 .fade-in {

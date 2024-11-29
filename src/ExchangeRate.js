@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import './ExchangeRate.css';
+import { Link } from 'react-router-dom/dist';
 
 const ExchangeRate = () => {
   const [amount, setAmount] = useState(1);
@@ -111,7 +112,7 @@ const ExchangeRate = () => {
   const getConvertedAmount = (rate) => {
     const baseRate = exchangeRates.find((r) => r.currency === selectedValue)?.buyRate.replace(/,/g, '') || 1;
     const convertedAmount = (amount / baseRate * rate.buyRate.replace(/,/g, '')).toFixed(2);
-    return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(convertedAmount) + ` ${rate.currency}`;
+    return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(convertedAmount);
   };
 
   return (
@@ -126,7 +127,7 @@ const ExchangeRate = () => {
         </div>
 
         <Tabs>
-          <TabList className="custom-tab-list mb-4">
+          <TabList className="custom-tab-list mb-2">
             <Tab className="custom-tab" selectedClassName="custom-tab-selected">
               Exchange Rate
             </Tab>
@@ -135,6 +136,10 @@ const ExchangeRate = () => {
             </Tab>
           </TabList>
           <TabPanel>
+            <div className="d-flex justify-content-between align-items-center ">
+              <span className="header-text"> </span>
+              <Link to="/contact-us" className="btn btn-link header-text">Contact Us</Link>
+            </div>
             <div className="Exchange_rate_table">
               <div className="Exchange_rate_header">
                 <div className="CCY">
@@ -172,7 +177,7 @@ const ExchangeRate = () => {
             <div className="converter">
               <div className="card p-3 mb-3">
                 <div className="form-group d-flex align-items-center justify-content-between">
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center position-relative">
                     <img
                       src={currencies.find((cur) => cur.code === selectedValue).flag}
                       alt={selectedValue}
@@ -190,6 +195,7 @@ const ExchangeRate = () => {
                         </option>
                       ))}
                     </select>
+                    <i className="fa fa-chevron-down position-absolute" style={{ right: '10px' }}></i>
                   </div>
                   <input
                     type="number"
