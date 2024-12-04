@@ -9,8 +9,14 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@twa-dev/sdk": "^8.0.1",
+    "ajv": "^6.12.6",
+    "ajv-keywords": "^3.5.2",
+    "axios": "^0.21.1",
+    "axios-cache-adapter": "^2.7.3",
     "babel-runtime": "^6.26.0",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.7",
+    "env-cmd": "^10.1.0",
     "mini-app-test": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -25,6 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:uat": "env-cmd -f .env.uat react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

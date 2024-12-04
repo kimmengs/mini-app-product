@@ -3,6 +3,19 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import './ExchangeRate.css';
 import { Link } from 'react-router-dom/dist';
+import axios from 'axios';
+import { setupCache } from 'axios-cache-adapter';
+
+// Create `axios-cache-adapter` instance
+const cache = setupCache({
+  maxAge: 15 * 60 * 1000 // Cache for 15 minutes
+});
+
+// Create an `axios` instance with the cache adapter
+const api = axios.create({
+  adapter: cache.adapter
+});
+
 
 const ExchangeRate = () => {
   const [amount, setAmount] = useState(1);
@@ -17,9 +30,6 @@ const ExchangeRate = () => {
   const currencies = [
     { code: 'USD', label: 'USD', flag: 'https://flagcdn.com/us.svg' },
     { code: 'KHR', label: 'KHR', flag: 'https://flagcdn.com/kh.svg' },
-    { code: 'THB', label: 'THB', flag: 'https://flagcdn.com/th.svg' },
-    { code: 'AUD', label: 'AUD', flag: 'https://flagcdn.com/au.svg' },
-    { code: 'EUR', label: 'EUR', flag: 'https://flagcdn.com/eu.svg' },
   ];
 
   const handleAmountChange = (e) => {
@@ -31,87 +41,37 @@ const ExchangeRate = () => {
   };
 
   useEffect(() => {
-    const jsonData = [
-      {
-        country: 'assets/images/icons/cambodia_flag.webp',
-        currency: 'KHR',
-        buyRate: '4,072',
-        sellRate: '4,061',
-        Currency_name: "Cambodian Riel",
-        exchagneRate_converted: "4,050.00 KHR",
-      },
-      {
-        country: 'assets/images/icons/thailand.webp',
-        currency: 'THB',
-        buyRate: '34.38',
-        sellRate: '32.28',
-        Currency_name: "Thai Baht",
-        exchagneRate_converted: "34.98 THB",
-      },
-      {
-        country: 'assets/images/icons/australia.webp',
-        currency: 'AUD',
-        buyRate: '0.6052',
-        sellRate: '0.6577',
-        Currency_name: " Australian Dollar",
-        exchagneRate_converted: "1.5417 AUD",
-      },
-      {
-        country: 'assets/images/icons/europe.webp',
-        currency: 'EUR',
-        buyRate: '1.0249',
-        sellRate: '1.0774',
-        Currency_name: "Euro",
-        exchagneRate_converted: "0.9555 EUR",
-      },
-      {
-        country: 'assets/images/icons/newzealand.webp',
-        currency: 'NZD',
-        buyRate: '0.5451',
-        sellRate: '0.5976',
-        Currency_name: "New Zealand Dollar",
-        exchagneRate_converted: "1.7150 NZD",
-      },
-      {
-        country: 'assets/images/icons/canada.webp',
-        currency: 'CAD',
-        buyRate: '1.4202',
-        sellRate: '1.3602',
-        Currency_name: "Canadian Dollar",
-        exchagneRate_converted: "1.4105 CAD",
-      },
-      {
-        country: 'assets/images/icons/vietname.webp',
-        currency: 'VND',
-        buyRate: '25,789',
-        sellRate: '24,823',
-        Currency_name: "Vietnamese Dong",
-        exchagneRate_converted: "24,710.59 VND",
-      },
-      {
-        country: 'assets/images/icons/japan.webp',
-        currency: 'JPY',
-        buyRate: '157.14',
-        sellRate: '150.75',
-        Currency_name: "Japanese Yen",
-        exchagneRate_converted: "153.97 JPY",
-      },
-      {
-        country: 'assets/images/icons/gbp.webp',
-        currency: 'GEP',
-        buyRate: '1.2294',
-        sellRate: '1.2894',
-        Currency_name: "British Pound Sterling",
-        exchagneRate_converted: "0.7977 GBP",
-      },
-    ];
-    setExchangeRates(jsonData);
+    const fetchData = async () => {
+      try {
+        const response = await api.get(`${process.env.REACT_APP_API_URL}/exchangeRate/get`);
+        if (response.data.status.code === 0) {
+          const mappedData = response.data.data
+            .filter(item => item.toCurrency === 'USD')
+            .map(item => ({
+              country: `assets/images/icons/${item.currencyShort.toLowerCase()}.webp`,
+              currency: item.currencyShort,
+              toCurrency: item.toCurrency,
+              buyRate: item.buyrate,
+              sellRate: item.sellrate,
+              Currency_name: item.currencyFull
+            }));
+          
+          setExchangeRates(mappedData);
+        } else {
+          console.error('Error fetching data:', response.data.status.error);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-
   const getConvertedAmount = (rate) => {
-    const baseRate = exchangeRates.find((r) => r.currency === selectedValue)?.buyRate.replace(/,/g, '') || 1;
-    const convertedAmount = (amount / baseRate * rate.buyRate.replace(/,/g, '')).toFixed(2);
+    console.log(rate);
+    const baseRate = exchangeRates.find((r) => r.currency === selectedValue)?.buyRate.toString().replace(/,/g, '') || 1;
+    const convertedAmount = (amount / baseRate * rate.buyRate.toString().replace(/,/g, '')).toFixed(2);
     return new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(convertedAmount);
   };
 
