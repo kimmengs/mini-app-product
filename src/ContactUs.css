@@ -1,18 +1,40 @@
 .contact-us-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .contact-us-form {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex: 1;
+  overflow-y: auto;
 }
 
 .submit-button {
-  align-self: flex-end;
-  margin-top: auto;
+  width: 95%;
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: #FFC600;
+  color: black;
+  font-weight: bold;
+  border: none;
+  text-align: center;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 45px;
+}
+
+.submit-button:focus,
+.submit-button:focus-visible {
+  outline: none; /* Remove the default blue outline */
+  background-color: #e6b800; /* Slightly darker shade for focus */
+}
+
+.submit-button:hover {
+  background-color: #e6b800; /* Slightly darker shade for hover */
 }

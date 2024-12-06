@@ -113,7 +113,7 @@ const ExchangeRate = () => {
                 </div>
               </div>
               {exchangeRates.map((rate, index) => (
-                <div className="Exchange_rate_row" key={index}>
+                <div className="Exchange_rate_row fade-in" key={index}>
                   <div className="CCY">
                     <span><img className="currency-flag" src={rate.country} alt='flag' /> {rate.currency}</span>
                   </div>
