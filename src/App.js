@@ -6,9 +6,9 @@ import PromotionDetail from './promotions/PromotionDetail';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
 import animationData from './assets/animations/loading.json'; // Update with the path to your Lottie animation JSON
-import ExchangeRate from './ExchangeRate';
-import ContactUs from './ContactUs';
-import './i18n'; 
+import ExchangeRate from './exchange-rate/ExchangeRate';
+import ContactUs from './exchange-rate/ContactUs';
+import './i18n';
 
 function App() {
 
@@ -50,16 +50,7 @@ function App() {
           <Route
             path="/promotion/:id"
             element={
-              <PromotionDetail
-                promotion={{
-                  title: "20% OFF at Aurum Theatre",
-                  imageUrl: "/assets/images/You-Eng-Hotel-640.jpeg",
-                  description:
-                    "Enjoy an exclusive 20% discount on all tickets at Aurum Theatre for a limited time. Don't miss out on the best cinematic experience in town.",
-                  terms:
-                    "Offer valid until the end of the month. Cannot be combined with other offers. Valid for online bookings only.",
-                }}
-              />
+              <PromotionDetail />
             }
           />
         </Routes>

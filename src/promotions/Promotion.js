@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 const Promotions = () => {
-    const categories = ['Feature', 'Latest', 'Education', 'Heath Care'];
+    const [categories, setCategories] = useState([]);
     const { t, i18n } = useTranslation();
     const location = useLocation();
 
@@ -23,8 +23,10 @@ const Promotions = () => {
         setActiveCategory(category);
     };
 
-    const navigateToDetail = (id) => {
-        navigate(`/promotion/${id}`);
+    const navigateToDetail = (promotion) => {
+        const searchParams = new URLSearchParams(location.search);
+        const language = searchParams.get('language') || 'en';
+        navigate(`/promotion/${promotion.id}`, { state: { promotion, language } });
     };
     const handleSearchClick = () => setShowSearch(!showSearch);
     const handleSearchChange = (e) => setSearchQuery(e.target.value);
@@ -49,7 +51,30 @@ const Promotions = () => {
             }
         };
 
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/category/get`);
+                if (Array.isArray(response.data.data)) {
+                    const allCategory = {
+                        id: 'all',
+                        name: 'All',
+                        translations: [
+                            { language: 'en', name: 'name', value: 'All' },
+                            { language: 'kh', name: 'name', value: 'ទាំងអស់' }
+                        ]
+                    };
+                    setCategories([allCategory, ...response.data.data]);
+                    setActiveCategory(allCategory); // Set the "All" category as active by default
+                } else {
+                    console.error('Error: API response is not an array');
+                }
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
         fetchPromotions();
+        fetchCategories();
     }, []);
 
     // Function to get translation value by language and name
@@ -58,13 +83,14 @@ const Promotions = () => {
         return translation ? translation.value : '';
     };
 
-    // Group promotions by cateName
     const groupedPromotions = Array.isArray(promotions) ? promotions.reduce((acc, promotion) => {
-        const { cateName } = promotion;
-        if (!acc[cateName]) {
-            acc[cateName] = [];
+        if (activeCategory && (activeCategory.id === 'all' || promotion.cateId === activeCategory.id)) {
+            const { cateName } = promotion;
+            if (!acc[cateName]) {
+                acc[cateName] = [];
+            }
+            acc[cateName].push(promotion);
         }
-        acc[cateName].push(promotion);
         return acc;
     }, {}) : {};
 
@@ -83,10 +109,10 @@ const Promotions = () => {
 
             {showSearch && (
                 <CSSTransition in={true} appear={true} timeout={500} classNames="fade">
-                    <div className="mb-3">
+                    <div className="search-input-container">
+                        <i className="fa fa-search"></i>
                         <input
                             type="text"
-                            className="form-control"
                             placeholder="Search..."
                             value={searchQuery}
                             onChange={handleSearchChange}
@@ -97,21 +123,23 @@ const Promotions = () => {
 
 
             <div className="scrolling-wrapper mb-3">
-                {categories.map((category, index) => (
-                    <div
-                        key={index}
-                        className={`card-category text-center ${activeCategory === category ? 'active' : ''}`}
-                        style={{ cursor: 'pointer' }}
-                        onClick={() => handleCategoryClick(category)}
-                    >
-                        <div className="card-body text-left">
-                            <p className="card-title-category">{category}</p>
+                {categories.map((category, index) => {
+                    const categoryName = getTranslation(category.translations, language, 'name') || category.name;
+                    return (
+                        <div
+                            key={index}
+                            className={`card-category text-center ${activeCategory === category ? 'active' : ''}`}
+                            style={{ cursor: 'pointer' }}
+                            onClick={() => handleCategoryClick(category)}
+                        >
+                            <div className="card-body text-left">
+                                <p className="card-title-category">{categoryName}</p>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
-            <h5 className="title">Feature</h5>
             <div className="pb-3"></div>
             <div className="scrolling-wrapper mb-3">
                 {Array.isArray(promotions) && promotions.filter(promotion => promotion.new).map((promotion, index) => {
@@ -121,9 +149,9 @@ const Promotions = () => {
                         <div key={index} className="card special-card text-center mb-3" style={{ cursor: 'pointer' }}>
                             <img
                                 src={promotion.imageUrl === '' ? 'assets/images/no-image.webp' : promotion.imageUrl}
-                                className="card-img-top"
+                                className="card-img-top fixed-size-image"
                                 alt={title}
-                                onClick={() => navigateToDetail(promotion.id)}
+                                onClick={() => navigateToDetail(promotion)}
                             />
                             <div className="card-body text-left">
                                 <h5 className="card-title">{title}</h5>
@@ -157,7 +185,7 @@ const Promotions = () => {
                                         src={promotion.imageUrl === '' ? 'assets/images/no-image.webp' : promotion.imageUrl}
                                         className="card-img-top"
                                         alt={title}
-                                        onClick={() => navigateToDetail(promotion.id)}
+                                        onClick={() => navigateToDetail(promotion)}
                                     />
                                     <div className="card-body text-left">
                                         <h5 className="card-title">{title}</h5>
