@@ -4,8 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import './i18n'; 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const setBodyClass = () => {
+  const language = new URLSearchParams(window.location.search).get('language') || 'en';
+  document.body.className = language === 'kh' ? 'kh' : '';
+};
+
+setBodyClass();
+
 root.render(
   <React.StrictMode>
     <App />

@@ -1,15 +1,14 @@
-import { MainButton } from '@twa-dev/sdk/react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import WebApp from '@twa-dev/sdk'
-import Promotions from './Promotion';
-import PromotionDetail from './PromotionDetail';
+import Promotions from './promotions/Promotion';
+import PromotionDetail from './promotions/PromotionDetail';
 import { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
 import animationData from './assets/animations/loading.json'; // Update with the path to your Lottie animation JSON
 import ExchangeRate from './ExchangeRate';
 import ContactUs from './ContactUs';
+import './i18n'; 
 
 function App() {
 
